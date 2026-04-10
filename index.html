@@ -5,74 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mes impressions 3D</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
+    body {font-family: Arial, sans-serif;margin: 0;background: #f5f5f5;color: #333;}
+    header {background: #111;color: white;padding: 20px;text-align: center;}
+    nav {background: #222;padding: 10px;text-align: center;}
+    nav a {color: white;margin: 0 15px;text-decoration: none;font-weight: bold;}
+    .container {padding: 20px;max-width: 1000px;margin: auto;}
+    .grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 20px;}
+    .card {background: white;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);overflow: hidden;transition: transform 0.2s;}
+    .card:hover {transform: scale(1.03);}    
+    .card img {width: 100%;height: 200px;object-fit: cover;}
+    .card-content {padding: 15px;}
+    footer {text-align: center;padding: 20px;background: #111;color: white;margin-top: 40px;}
 
-    header {
-      background: #111;
+    /* Boutons catégories */
+    .filters {text-align: center;margin-bottom: 20px;}
+    .filters button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #333;
       color: white;
-      padding: 20px;
-      text-align: center;
+      cursor: pointer;
     }
-
-    nav {
-      background: #222;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 15px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      color: white;
-      margin-top: 40px;
-    }
+    .filters button:hover {background: #555;}
   </style>
 </head>
 <body>
@@ -90,9 +46,18 @@
 
 <div class="container" id="produits">
   <h2>Mes produits</h2>
+
+  <!-- Boutons catégories -->
+  <div class="filters">
+    <button onclick="filterSelection('all')">Tout</button>
+    <button onclick="filterSelection('utile')">Utile</button>
+    <button onclick="filterSelection('deco')">Déco</button>
+    <button onclick="filterSelection('figurine')">Figurines</button>
+  </div>
+
   <div class="grid">
 
-    <div class="card">
+    <div class="card utile">
       <img src="https://via.placeholder.com/300x200" alt="Produit 1">
       <div class="card-content">
         <h3>Support téléphone</h3>
@@ -100,7 +65,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card figurine">
       <img src="https://via.placeholder.com/300x200" alt="Produit 2">
       <div class="card-content">
         <h3>Figurine</h3>
@@ -108,7 +73,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card deco">
       <img src="https://via.placeholder.com/300x200" alt="Produit 3">
       <div class="card-content">
         <h3>Boîte design</h3>
@@ -127,6 +92,23 @@
 <footer>
   <p>© 2026 Mes impressions 3D</p>
 </footer>
+
+<script>
+function filterSelection(category) {
+  let cards = document.getElementsByClassName("card");
+
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].style.display = "none";
+
+    if (category === "all" || cards[i].classList.contains(category)) {
+      cards[i].style.display = "block";
+    }
+  }
+}
+
+// Affiche tout au départ
+filterSelection('all');
+</script>
 
 </body>
 </html>
