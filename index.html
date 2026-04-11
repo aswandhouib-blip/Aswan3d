@@ -11,29 +11,20 @@
     nav a {color: white;margin: 0 15px;text-decoration: none;font-weight: bold;}
     .container {padding: 20px;max-width: 1000px;margin: auto;}
     .grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 20px;}
-    .card {background: white;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);overflow: hidden;transition: transform 0.2s;}
-    .card:hover {transform: scale(1.03);}    
+    .card {background: white;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);overflow: hidden;margin-bottom:20px;}
     .card img {width: 100%;height: 200px;object-fit: cover;}
     .card-content {padding: 15px;}
     footer {text-align: center;padding: 20px;background: #111;color: white;margin-top: 40px;}
 
-    .filters {text-align: center;margin-bottom: 20px;}
-    .filters button {margin: 5px;padding: 10px 15px;border: none;border-radius: 8px;background: #333;color: white;cursor: pointer;}
-    .filters button:hover {background: #555;}
-
-    /* Zone texte + images */
-    .content-block {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .category-section {
+      margin-top: 40px;
     }
 
-    .content-block img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
+    .category-title {
+      background: #333;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -46,66 +37,57 @@
 
 <nav>
   <a href="#">Accueil</a>
-  <a href="#produits">Produits</a>
-  <a href="#presentation">Présentation</a>
+  <a href="#figurines">Figurines</a>
+  <a href="#utile">Objets utiles</a>
+  <a href="#deco">Décoration</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- SECTION TEXTE + IMAGE -->
-<div class="container" id="presentation">
-  <h2>Présentation</h2>
+<div class="container">
+  <h2>Mes catégories</h2>
+  <p>Clique sur une catégorie pour voir les produits.</p>
+</div>
 
-  <div class="content-block">
-    <h3>Qui suis-je ?</h3>
-    <p>Ici tu peux écrire du texte pour présenter ton activité d'impression 3D.</p>
-    <img src="https://via.placeholder.com/600x300" alt="image présentation">
-  </div>
+<!-- FIGURINES -->
+<div class="container category-section" id="figurines">
+  <h2 class="category-title">Figurines</h2>
 
-  <div class="content-block">
-    <h3>Mon matériel</h3>
-    <p>Décris ton imprimante, tes matériaux (PLA, PETG, etc).</p>
-    <img src="https://via.placeholder.com/600x300" alt="machine">
+  <div class="card">
+    <img src="https://via.placeholder.com/300x200">
+    <div class="card-content">
+      <h3>Figurine dragon</h3>
+      <p>Figurine détaillée imprimée en 3D.</p>
+    </div>
   </div>
 
 </div>
 
-<div class="container" id="produits">
-  <h2>Mes produits</h2>
+<!-- OBJETS UTILES -->
+<div class="container category-section" id="utile">
+  <h2 class="category-title">Objets utiles</h2>
 
-  <div class="filters">
-    <button onclick="filterSelection('all')">Tout</button>
-    <button onclick="filterSelection('utile')">Utile</button>
-    <button onclick="filterSelection('deco')">Déco</button>
-    <button onclick="filterSelection('figurine')">Figurines</button>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x200">
+    <div class="card-content">
+      <h3>Support téléphone</h3>
+      <p>Support pratique pour smartphone.</p>
+    </div>
   </div>
 
-  <div class="grid">
+</div>
 
-    <div class="card utile">
-      <img src="https://via.placeholder.com/300x200" alt="Produit 1">
-      <div class="card-content">
-        <h3>Support téléphone</h3>
-        <p>Support pratique imprimé en 3D.</p>
-      </div>
+<!-- DECO -->
+<div class="container category-section" id="deco">
+  <h2 class="category-title">Décoration</h2>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/300x200">
+    <div class="card-content">
+      <h3>Boîte design</h3>
+      <p>Objet déco moderne.</p>
     </div>
-
-    <div class="card figurine">
-      <img src="https://via.placeholder.com/300x200" alt="Produit 2">
-      <div class="card-content">
-        <h3>Figurine</h3>
-        <p>Figurine personnalisée.</p>
-      </div>
-    </div>
-
-    <div class="card deco">
-      <img src="https://via.placeholder.com/300x200" alt="Produit 3">
-      <div class="card-content">
-        <h3>Boîte design</h3>
-        <p>Boîte décorative imprimée.</p>
-      </div>
-    </div>
-
   </div>
+
 </div>
 
 <div class="container" id="contact">
@@ -116,22 +98,6 @@
 <footer>
   <p>© 2026 Mes impressions 3D</p>
 </footer>
-
-<script>
-function filterSelection(category) {
-  let cards = document.getElementsByClassName("card");
-
-  for (let i = 0; i < cards.length; i++) {
-    cards[i].style.display = "none";
-
-    if (category === "all" || cards[i].classList.contains(category)) {
-      cards[i].style.display = "block";
-    }
-  }
-}
-
-filterSelection('all');
-</script>
 
 </body>
 </html>
