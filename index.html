@@ -10,10 +10,10 @@
     nav {background: #222;padding: 10px;text-align: center;}
     nav a {color: white;margin: 0 15px;text-decoration: none;font-weight: bold;}
     .container {padding: 20px;max-width: 1000px;margin: auto;}
-    .grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 20px;}
-    .card {background: white;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);overflow: hidden;margin-bottom:20px;}
+    .grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 320px));justify-content: center;align-items: stretch;gap: 20px;}
+    .card {background: white;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);overflow: hidden;margin-bottom:20px;width: 100%;}
     .card img {width: 100%;height: 200px;object-fit: cover;}
-    .card-content {padding: 15px;}
+    .card-content {padding: 15px;display: flex;flex-direction: column;gap: 10px;min-height: 100%;}
     footer {text-align: center;padding: 20px;background: #111;color: white;margin-top: 40px;}
 
     .category-section {
@@ -53,140 +53,146 @@
 <div class="container category-section" id="figurines">
   <h2 class="category-title">Figurines</h2>
 
-  <div class="card">
-    <img src="dragon.webp">
-    <div class="card-content">
-      <h3>Figurine dragon</h3>
-      <p>Figurine détaillée imprimée en 3D.</p>
-      <p>5€.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="dragon.webp">
+      <div class="card-content">
+        <h3>Figurine dragon</h3>
+        <p>Figurine détaillée imprimée en 3D.</p>
+        <p>5€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="figurine cochon.webp">
+      <div class="card-content">
+        <h3>figurine cochon</h3>
+        <p>figurine de cochon.</p>
+        <p>5€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="figurine de Luffy.webp">
+      <div class="card-content">
+        <h3>figurine Luffy</h3>
+        <p>figurine de Luffy.</p>
+        <p>7€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="figurine chat dinosore.webp">
+      <div class="card-content">
+        <h3>figurine chat dinosore</h3>
+        <p>figurine chat dinosore.</p>
+        <p>6€.</p>
+      </div>
     </div>
   </div>
-
-  <div class="card">
-    <img src="figurine cochon.webp">
-    <div class="card-content">
-      <h3>figurine cochon</h3>
-      <p>figurine de cochon.</p>
-      <p>5€.</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="figurine de Luffy.webp">
-    <div class="card-content">
-      <h3>figurine Luffy</h3>
-      <p>figurine de Luffy.</p>
-      <p>7€.</p>
-    </div>
-  </div>
-
-   <div class="card">
-    <img src="figurine chat dinosore.webp">
-    <div class="card-content">
-      <h3>figurine chat dinosore</h3>
-      <p>figurine chat dinosore.</p>
-      <p>6€.</p>
-    </div>
-  </div>
-
 </div>
 
 <!-- OBJETS UTILES -->
 <div class="container category-section" id="utile">
   <h2 class="category-title">Objets utiles</h2>
 
-  <div class="card">
-    <img src="support pour telephone.webp">
-    <div class="card-content">
-      <h3>Support téléphone</h3>
-      <p>Support pratique pour smartphone.</p>
-      <p>7€.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="support pour telephone.webp">
+      <div class="card-content">
+        <h3>Support téléphone</h3>
+        <p>Support pratique pour smartphone.</p>
+        <p>7€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="support pour ordinateur.webp">
+      <div class="card-content">
+        <h3>Support ordinateur</h3>
+        <p>Support pratique por ordinateur.</p>
+        <p>7€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="pince robotique.webp">
+      <div class="card-content">
+        <h3>pince robotique</h3>
+        <p>pince robotique.</p>
+        <p>6€.</p>
+      </div>
     </div>
   </div>
-
-  <div class="card">
-    <img src="support pour ordinateur.webp">
-    <div class="card-content">
-      <h3>Support ordinateur</h3>
-      <p>Support pratique por ordinateur.</p>
-      <p>7€.</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="pince robotique.webp">
-    <div class="card-content">
-      <h3>pince robotique</h3>
-      <p>pince robotique.</p>
-      <p>6€.</p>
-    </div>
-  </div>
-
 </div>
 
 <!-- Fidget -->
 <div class="container category-section" id="fidget">
   <h2 class="category-title">Fidget</h2>
 
-  <div class="card">
-    <img src="main-articulé.jpg">
-    <div class="card-content">
-      <h3>main articuler</h3>
-      <p>objet satisfaisant.</p>
-      <p>8€.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="main-articulé.jpg">
+      <div class="card-content">
+        <h3>main articuler</h3>
+        <p>objet satisfaisant.</p>
+        <p>8€.</p>
+      </div>
     </div>
- </div>
-  
-<div class="card">
-    <img src="mini oeuf dragon articule.webp">
-    <div class="card-content">
-      <h3>mini oeuf drangon articule</h3>
-      <p>objet satisfaisant.</p>
-      <p>9.50€.</p>
+    
+    <div class="card">
+      <img src="mini oeuf dragon articule.webp">
+      <div class="card-content">
+        <h3>mini oeuf drangon articule</h3>
+        <p>objet satisfaisant.</p>
+        <p>9.50€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="cone spirale.webp">
+      <div class="card-content">
+        <h3>cine spirale</h3>
+        <p>objet satisfaisant.</p>
+        <p>5€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="sciseau extensible.webp">
+      <div class="card-content">
+        <h3>sciseau extensible</h3>
+        <p>objet satisfaisant.</p>
+        <p>6€.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="fidgetb etoile.webp">
+      <div class="card-content">
+        <h3>fidget etoile</h3>
+        <p>objet satisfaisant.</p>
+        <p>5.50€.</p>
+      </div>
     </div>
   </div>
-
- <div class="card">
-    <img src="cone spirale.webp">
-    <div class="card-content">
-      <h3>cine spirale</h3>
-      <p>objet satisfaisant.</p>
-      <p>5€.</p>
-    </div>
- </div>
-
-   <div class="card">
-    <img src="sciseau extensible.webp">
-    <div class="card-content">
-      <h3>sciseau extensible</h3>
-      <p>objet satisfaisant.</p>
-      <p>6€.</p>
-    </div>
- </div>
-
-   <div class="card">
-    <img src="fidgetb etoile.webp">
-    <div class="card-content">
-      <h3>fidget etoile</h3>
-      <p>objet satisfaisant.</p>
-      <p>5.50€.</p>
-    </div>
- </div>
-  
 </div>
 
   <!-- Pisolet -->
 <div class="container category-section" id="pistolet">
   <h2 class="category-title">pistolet</h2>
 
-  <div class="card">
-    <img src="pistolet a curdents.webp">
-    <div class="card-content">
-      <h3>pistolet a curdents</h3>
-      <p>objet drôle.</p>
-      <p>2.50€.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="pistolet a curdents.webp">
+      <div class="card-content">
+        <h3>pistolet a curdents</h3>
+        <p>objet drôle.</p>
+        <p>2.50€.</p>
+      </div>
     </div>
- </div>
+  </div>
+</div>
 
 <div class="container" id="contact">
   <h2>Contact</h2>
