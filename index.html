@@ -4,17 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mes impressions 3D</title>
+
   <style>
-    body {font-family: Arial, sans-serif;margin: 0;background: #f5f5f5;color: #333;}
-    header {background: #111;color: white;padding: 20px;text-align: center;}
-    nav {background: #222;padding: 10px;text-align: center;}
-    nav a {color: white;margin: 0 15px;text-decoration: none;font-weight: bold;}
-    .container {padding: 20px;max-width: 1000px;margin: auto;}
-    .grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 320px));justify-content: center;align-items: stretch;gap: 20px;}
-    .card {background: white;border-radius: 12px;box-shadow: 0 4px 10px rgba(0,0,0,0.1);overflow: hidden;margin-bottom:20px;width: 100%;}
-    .card img {width: 100%;height: 200px;object-fit: cover;}
-    .card-content {padding: 15px;display: flex;flex-direction: column;gap: 10px;min-height: 100%;}
-    footer {text-align: center;padding: 20px;background: #111;color: white;margin-top: 40px;}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #222;
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
 
     .category-section {
       margin-top: 40px;
@@ -26,8 +82,48 @@
       padding: 10px;
       border-radius: 8px;
     }
+
+    button {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #444;
+    }
+
+    #cart-items {
+      margin-top: 20px;
+    }
+
+    .cart-item {
+      background: white;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: white;
+      margin-top: 40px;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -41,7 +137,7 @@
   <a href="#utile">Objets utiles</a>
   <a href="#fidget">Fidget</a>
   <a href="#contact">Contact</a>
-  <a href="#pistolet">Pistolet</a>
+  <a href="#panier">🛒 Panier (<span id="cart-count">0</span>)</a>
 </nav>
 
 <div class="container">
@@ -54,41 +150,43 @@
   <h2 class="category-title">Figurines</h2>
 
   <div class="grid">
+
     <div class="card">
-      <img src="dragon.webp">
+      <img src="dragon.webp" alt="Figurine dragon">
       <div class="card-content">
         <h3>Figurine dragon</h3>
         <p>Figurine détaillée imprimée en 3D.</p>
-        <p>5€.</p>
+        <p>5€</p>
+        <button onclick="addToCart('Figurine dragon', 5)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
     <div class="card">
-      <img src="figurine cochon.webp">
+      <img src="figurine cochon.webp" alt="Figurine cochon">
       <div class="card-content">
-        <h3>figurine cochon</h3>
-        <p>figurine de cochon.</p>
-        <p>5€.</p>
+        <h3>Figurine cochon</h3>
+        <p>Figurine de cochon.</p>
+        <p>5€</p>
+        <button onclick="addToCart('Figurine cochon', 5)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
     <div class="card">
-      <img src="figurine de Luffy.webp">
+      <img src="figurine de Luffy.webp" alt="Figurine Luffy">
       <div class="card-content">
-        <h3>figurine Luffy</h3>
-        <p>figurine de Luffy.</p>
-        <p>7€.</p>
+        <h3>Figurine Luffy</h3>
+        <p>Figurine de Luffy.</p>
+        <p>7€</p>
+        <button onclick="addToCart('Figurine Luffy', 7)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
-    <div class="card">
-      <img src="figurine chat dinosore.webp">
-      <div class="card-content">
-        <h3>figurine chat dinosore</h3>
-        <p>figurine chat dinosore.</p>
-        <p>6€.</p>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -97,167 +195,157 @@
   <h2 class="category-title">Objets utiles</h2>
 
   <div class="grid">
+
     <div class="card">
-      <img src="support pour telephone.webp">
+      <img src="support pour telephone.webp" alt="Support téléphone">
       <div class="card-content">
         <h3>Support téléphone</h3>
         <p>Support pratique pour smartphone.</p>
-        <p>7€.</p>
+        <p>7€</p>
+        <button onclick="addToCart('Support téléphone', 7)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
     <div class="card">
-      <img src="support pour ordinateur.webp">
+      <img src="support pour ordinateur.webp" alt="Support ordinateur">
       <div class="card-content">
         <h3>Support ordinateur</h3>
-        <p>Support pratique por ordinateur.</p>
-        <p>7€.</p>
+        <p>Support pratique pour ordinateur.</p>
+        <p>7€</p>
+        <button onclick="addToCart('Support ordinateur', 7)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
-    <div class="card">
-      <img src="pince robotique.webp">
-      <div class="card-content">
-        <h3>pince robotique</h3>
-        <p>pince robotique.</p>
-        <p>6€.</p>
-      </div>
-    </div>
   </div>
 </div>
 
-<!-- Fidget -->
+<!-- FIDGET -->
 <div class="container category-section" id="fidget">
   <h2 class="category-title">Fidget</h2>
 
   <div class="grid">
+
     <div class="card">
-      <img src="main-articulé.jpg">
+      <img src="main-articulé.jpg" alt="Main articulée">
       <div class="card-content">
-        <h3>main articuler</h3>
-        <p>objet satisfaisant.</p>
-        <p>8€.</p>
-      </div>
-    </div>
-    
-    <div class="card">
-      <img src="mini oeuf dragon articule.webp">
-      <div class="card-content">
-        <h3>mini oeuf drangon articule</h3>
-        <p>objet satisfaisant.</p>
-        <p>9.50€.</p>
+        <h3>Main articulée</h3>
+        <p>Objet satisfaisant.</p>
+        <p>8€</p>
+        <button onclick="addToCart('Main articulée', 8)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
     <div class="card">
-      <img src="cone spirale.webp">
+      <img src="mini oeuf dragon articule.webp" alt="Oeuf dragon articulé">
       <div class="card-content">
-        <h3>cone spirale</h3>
-        <p>objet satisfaisant.</p>
-        <p>5€.</p>
+        <h3>Mini oeuf dragon articulé</h3>
+        <p>Objet satisfaisant.</p>
+        <p>9.50€</p>
+        <button onclick="addToCart('Mini oeuf dragon articulé', 9.5)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
     <div class="card">
-      <img src="sciseau extensible.webp">
+      <img src="cone spirale.webp" alt="Cone spirale">
       <div class="card-content">
-        <h3>sciseau extensible</h3>
-        <p>objet satisfaisant.</p>
-        <p>6€.</p>
+        <h3>Cone spirale</h3>
+        <p>Objet satisfaisant.</p>
+        <p>5€</p>
+        <button onclick="addToCart('Cone spirale', 5)">
+          Ajouter au panier
+        </button>
       </div>
     </div>
 
-    <div class="card">
-      <img src="fidgetb etoile.webp">
-      <div class="card-content">
-        <h3>fidget etoile</h3>
-        <p>objet satisfaisant.</p>
-        <p>5.50€.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="F1 fidget.webp">
-      <div class="card-content">
-        <h3>jouet F1</h3>
-        <p>objet satisfaisant.</p>
-        <p>1€.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="hand spiner a fair glisser sur les doits.webp">
-      <div class="card-content">
-        <h3>hand spiner qui glisse sur les doits</h3>
-        <p>objet satisfaisant.</p>
-        <p>1€.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="ressord geant.webp">
-      <div class="card-content">
-        <h3>ressord geant</h3>
-        <p>objet satisfaisant.</p>
-        <p>3.50€.</p>
-      </div>
-    </div>
-    
-    <div class="card">
-      <img src="point d exclamation flotant.webp">
-      <div class="card-content">
-        <h3>point d'exclamation</h3>
-        <p>objet satisfaisant.</p>
-        <p>5.50€.</p>
-      </div>
-    </div>
   </div>
-  
 </div>
 
-  <!-- Pisolet -->
-<div class="container category-section" id="pistolet">
-  <h2 class="category-title">pistolet</h2>
+<!-- PANIER -->
+<div class="container category-section" id="panier">
+  <h2 class="category-title">🛒 Panier</h2>
 
-  <div class="grid">
-    <div class="card">
-      <img src="pistolet a curdents.webp">
-      <div class="card-content">
-        <h3>pistolet a curdents</h3>
-        <p>objet drôle.</p>
-        <p>2.50€.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="lance piere de poche.webp">
-      <div class="card-content">
-        <h3>lance piere de poche</h3>
-        <p>objet drôle.</p>
-        <p>3€.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="pistolet a bille.webp">
-      <div class="card-content">
-        <h3>pistolet a bille</h3>
-        <p>objet drôle.</p>
-        <p>3€.</p>
-      </div>
-    </div>
+  <div id="cart-items">
+    <p>Le panier est vide.</p>
   </div>
-  
+
+  <h3>Total : <span id="cart-total">0</span> €</h3>
 </div>
 
+<!-- CONTACT -->
 <div class="container" id="contact">
   <h2>Contact</h2>
-  <p>Tu peux me contacter à : <b>tonemail@example.com</b></p>
+  <p>
+    Tu peux me contacter à :
+    <b>tonemail@example.com</b>
+  </p>
 </div>
 
 <footer>
   <p>© 2026 Mes impressions 3D</p>
 </footer>
+
+<script>
+  let cart = [];
+  let total = 0;
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    total += price;
+
+    updateCart();
+  }
+
+  function removeFromCart(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+
+    updateCart();
+  }
+
+  function updateCart() {
+
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.getElementById("cart-count");
+
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = "<p>Le panier est vide.</p>";
+    } else {
+
+      cart.forEach((item, index) => {
+
+        cartItems.innerHTML += `
+          <div class="cart-item">
+
+            <span>
+              ${item.name} - ${item.price}€
+            </span>
+
+            <button onclick="removeFromCart(${index})">
+              Supprimer
+            </button>
+
+          </div>
+        `;
+
+      });
+
+    }
+
+    cartTotal.textContent = total.toFixed(2);
+    cartCount.textContent = cart.length;
+  }
+</script>
 
 </body>
 </html>
