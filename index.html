@@ -118,8 +118,12 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .paypal-container {
+    .payment-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
       margin-top: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     footer {
@@ -324,90 +328,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <img src="sciseau extensible.webp" alt="Ciseaux extensibles">
-
-      <div class="card-content">
-        <h3>Ciseaux extensibles</h3>
-        <p>Objet satisfaisant.</p>
-        <p>6€</p>
-
-        <button onclick="addToCart('Ciseaux extensibles', 6)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="fidgetb etoile.webp" alt="Fidget étoile">
-
-      <div class="card-content">
-        <h3>Fidget étoile</h3>
-        <p>Objet satisfaisant.</p>
-        <p>5.50€</p>
-
-        <button onclick="addToCart('Fidget étoile', 5.5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="F1 fidget.webp" alt="Jouet F1">
-
-      <div class="card-content">
-        <h3>Jouet F1</h3>
-        <p>Objet satisfaisant.</p>
-        <p>1€</p>
-
-        <button onclick="addToCart('Jouet F1', 1)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="hand spiner a fair glisser sur les doits.webp" alt="Hand spinner">
-
-      <div class="card-content">
-        <h3>Hand spinner</h3>
-        <p>Objet satisfaisant.</p>
-        <p>1€</p>
-
-        <button onclick="addToCart('Hand spinner', 1)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="ressord geant.webp" alt="Ressort géant">
-
-      <div class="card-content">
-        <h3>Ressort géant</h3>
-        <p>Objet satisfaisant.</p>
-        <p>3.50€</p>
-
-        <button onclick="addToCart('Ressort géant', 3.5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="point d exclamation flotant.webp" alt="Point d'exclamation flottant">
-
-      <div class="card-content">
-        <h3>Point d'exclamation flottant</h3>
-        <p>Objet satisfaisant.</p>
-        <p>5.50€</p>
-
-        <button onclick="addToCart('Point d exclamation flottant', 5.5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
   </div>
 
 </div>
@@ -476,13 +396,18 @@
 
   <h3>Total : <span id="cart-total">0</span> €</h3>
 
-  <!-- PAYPAL -->
-  <div class="paypal-container">
+  <!-- WERO -->
+  <div class="payment-box">
 
-    <!-- REMPLACE TON_CLIENT_ID_PAYPAL -->
-    <script src="https://www.paypal.com/sdk/js?client-id=TON_CLIENT_ID_PAYPAL&currency=EUR"></script>
+    <h3>Paiement Wero</h3>
 
-    <div id="paypal-button-container"></div>
+    <p>
+      Le paiement Wero sera ajouté via Stripe.
+    </p>
+
+    <button id="checkout-button">
+      Payer avec Wero
+    </button>
 
   </div>
 
@@ -490,12 +415,14 @@
 
 <!-- CONTACT -->
 <div class="container" id="contact">
+
   <h2>Contact</h2>
 
   <p>
     Tu peux me contacter à :
     <b>tonemail@example.com</b>
   </p>
+
 </div>
 
 <footer>
@@ -563,9 +490,9 @@
     cartCount.textContent = cart.length;
   }
 
-  paypal.Buttons({
-
-    createOrder: function(data, actions) {
+  document
+    .getElementById("checkout-button")
+    .addEventListener("click", () => {
 
       if(total <= 0){
 
@@ -574,42 +501,11 @@
 
       }
 
-      return actions.order.create({
+      alert(
+        "Configure Stripe + Wero pour activer les paiements."
+      );
 
-        purchase_units: [{
-
-          amount: {
-            value: total.toFixed(2)
-          }
-
-        }]
-
-      });
-
-    },
-
-    onApprove: function(data, actions) {
-
-      return actions.order.capture().then(function(details) {
-
-        alert(
-
-          "Merci " +
-          details.payer.name.given_name +
-          " ! Paiement réussi."
-
-        );
-
-        cart = [];
-        total = 0;
-
-        updateCart();
-
-      });
-
-    }
-
-  }).render('#paypal-button-container');
+    });
 
 </script>
 
