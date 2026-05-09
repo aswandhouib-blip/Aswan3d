@@ -7,7 +7,6 @@
   <title>Mes impressions 3D</title>
 
   <style>
-
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -73,6 +72,7 @@
       color: white;
       padding: 10px;
       border-radius: 8px;
+      margin-top: 40px;
     }
 
     button {
@@ -111,7 +111,6 @@
       padding: 10px;
       margin: 5px 0;
     }
-
   </style>
 </head>
 
@@ -119,64 +118,198 @@
 
 <header>
   <h1>Mes impressions 3D</h1>
+  <p>Boutique en ligne</p>
 </header>
 
 <nav>
   <a href="#figurines">Figurines</a>
-  <a href="#utile">Objets utiles</a>
+  <a href="#utile">Utiles</a>
   <a href="#fidget">Fidget</a>
-  <a href="#pistolet">Fun</a>
+  <a href="#fun">Fun</a>
   <a href="#panier">Panier</a>
 </nav>
 
-<div class="container" id="figurines">
-  <h2 class="category-title">Figurines</h2>
+<div class="container">
 
-  <div class="grid">
+<!-- FIGURINES -->
+<h2 class="category-title" id="figurines">Figurines</h2>
 
-    <div class="card">
-      <img src="dragon.webp">
-      <div class="card-content">
-        <h3>Dragon</h3>
-        <p>5€</p>
-        <button onclick="addToCart('Dragon',5)">Ajouter</button>
-      </div>
+<div class="grid">
+
+  <div class="card">
+    <img src="dragon.webp">
+    <div class="card-content">
+      <h3>Dragon</h3>
+      <p>5€</p>
+      <button onclick="addToCart('Dragon',5)">Ajouter</button>
     </div>
-
-    <div class="card">
-      <img src="figurine cochon.webp">
-      <div class="card-content">
-        <h3>Cochon</h3>
-        <p>5€</p>
-        <button onclick="addToCart('Cochon',5)">Ajouter</button>
-      </div>
-    </div>
-
   </div>
+
+  <div class="card">
+    <img src="figurine cochon.webp">
+    <div class="card-content">
+      <h3>Cochon</h3>
+      <p>5€</p>
+      <button onclick="addToCart('Cochon',5)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="figurine chat dinosore.webp">
+    <div class="card-content">
+      <h3>Chat dinosaure</h3>
+      <p>6€</p>
+      <button onclick="addToCart('Chat dinosaure',6)">Ajouter</button>
+    </div>
+  </div>
+
 </div>
 
+<!-- UTILITAIRES -->
+<h2 class="category-title" id="utile">Objets utiles</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="support pour telephone.webp">
+    <div class="card-content">
+      <h3>Support téléphone</h3>
+      <p>7€</p>
+      <button onclick="addToCart('Support téléphone',7)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="support pour ordinateur.webp">
+    <div class="card-content">
+      <h3>Support ordinateur</h3>
+      <p>7€</p>
+      <button onclick="addToCart('Support ordinateur',7)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="pince robotique.webp">
+    <div class="card-content">
+      <h3>Pince robotique</h3>
+      <p>6€</p>
+      <button onclick="addToCart('Pince robotique',6)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="volant pour manette.webp">
+    <div class="card-content">
+      <h3>Volant manette</h3>
+      <p>7€</p>
+      <button onclick="addToCart('Volant manette',7)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="volant pour manette de switch.webp">
+    <div class="card-content">
+      <h3>Volant Switch</h3>
+      <p>7€</p>
+      <button onclick="addToCart('Volant Switch',7)">Ajouter</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FIDGET -->
+<h2 class="category-title" id="fidget">Fidget</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="main-articulé.jpg">
+    <div class="card-content">
+      <h3>Main articulée</h3>
+      <p>8€</p>
+      <button onclick="addToCart('Main articulée',8)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="mini oeuf dragon articule.webp">
+    <div class="card-content">
+      <h3>Œuf dragon</h3>
+      <p>9.50€</p>
+      <button onclick="addToCart('Œuf dragon',9.5)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="cone spirale.webp">
+    <div class="card-content">
+      <h3>Cône spirale</h3>
+      <p>5€</p>
+      <button onclick="addToCart('Cône spirale',5)">Ajouter</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FUN -->
+<h2 class="category-title" id="fun">Objets fun</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="pistolet a curdents.webp">
+    <div class="card-content">
+      <h3>Pistolet cure-dents</h3>
+      <p>2.50€</p>
+      <button onclick="addToCart('Pistolet cure-dents',2.5)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="lance piere de poche.webp">
+    <div class="card-content">
+      <h3>Lance pierre</h3>
+      <p>3€</p>
+      <button onclick="addToCart('Lance pierre',3)">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="pistolet a bille.webp">
+    <div class="card-content">
+      <h3>Pistolet bille</h3>
+      <p>3€</p>
+      <button onclick="addToCart('Pistolet bille',3)">Ajouter</button>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- PANIER -->
 <div class="container" id="panier">
-  <h2 class="category-title">Panier</h2>
 
-  <div id="cart-items"></div>
-  <h3>Total : <span id="cart-total">0</span> €</h3>
+<h2 class="category-title">Panier</h2>
 
-  <!-- PAYPAL -->
-  <div class="payment-box">
-    <h3>PayPal</h3>
-    <button onclick="payWithPaypal()">Payer avec PayPal</button>
-  </div>
+<div id="cart-items"></div>
 
-  <!-- EMAIL -->
-  <div class="payment-box">
-    <h3>Envoyer la commande</h3>
+<h3>Total : <span id="cart-total">0</span> €</h3>
 
-    <input id="name" placeholder="Nom">
-    <input id="email" placeholder="Email">
-    <textarea id="address" placeholder="Adresse"></textarea>
+<div class="payment-box">
+  <h3>PayPal</h3>
+  <button onclick="payWithPaypal()">Payer</button>
+</div>
 
-    <button onclick="sendOrderEmail()">Envoyer la commande</button>
-  </div>
+<div class="payment-box">
+  <h3>Commande email</h3>
+
+  <input id="name" placeholder="Nom">
+  <input id="email" placeholder="Email">
+  <textarea id="address" placeholder="Adresse"></textarea>
+
+  <button onclick="sendOrderEmail()">Envoyer commande</button>
+</div>
 
 </div>
 
@@ -191,9 +324,9 @@ function addToCart(name, price){
   updateCart();
 }
 
-function removeFromCart(index){
-  total -= cart[index].price;
-  cart.splice(index,1);
+function removeFromCart(i){
+  total -= cart[i].price;
+  cart.splice(i,1);
   updateCart();
 }
 
@@ -244,15 +377,13 @@ function sendOrderEmail(){
   });
 
   fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
     body: JSON.stringify({
-      access_key: "8766f665-dac8-4be6-936e-43b8c17454ea",
-      name: name,
-      email: email,
-      message: `Commande:\n${order}\n\nAdresse:\n${address}\n\nTotal: ${total}€`
+      access_key:"8766f665-dac8-4be6-936e-43b8c17454ea",
+      name,
+      email,
+      message:`Commande:\n${order}\n\nAdresse:\n${address}\n\nTotal:${total}€`
     })
   })
   .then(r=>r.json())
@@ -263,7 +394,7 @@ function sendOrderEmail(){
       total = 0;
       updateCart();
     } else {
-      alert("Erreur envoi");
+      alert("Erreur");
     }
   });
 
