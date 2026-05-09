@@ -48,7 +48,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
       justify-content: center;
-      align-items: stretch;
       gap: 20px;
     }
 
@@ -57,12 +56,6 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
     }
 
     .card img {
@@ -73,10 +66,6 @@
 
     .card-content {
       padding: 15px;
-    }
-
-    .category-section {
-      margin-top: 40px;
     }
 
     .category-title {
@@ -93,7 +82,6 @@
       padding: 10px;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
       width: 100%;
       margin-top: 10px;
     }
@@ -102,36 +90,26 @@
       background: #444;
     }
 
-    #cart-items {
-      margin-top: 20px;
-    }
-
     .cart-item {
       background: white;
-      padding: 12px;
-      border-radius: 10px;
+      padding: 10px;
       margin-bottom: 10px;
+      border-radius: 8px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .payment-box {
       background: white;
       padding: 20px;
-      border-radius: 12px;
       margin-top: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 12px;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      color: white;
-      margin-top: 40px;
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
     }
 
   </style>
@@ -141,383 +119,155 @@
 
 <header>
   <h1>Mes impressions 3D</h1>
-  <p>Bienvenue sur ma boutique / portfolio</p>
 </header>
 
 <nav>
-  <a href="#">Accueil</a>
   <a href="#figurines">Figurines</a>
   <a href="#utile">Objets utiles</a>
   <a href="#fidget">Fidget</a>
-  <a href="#pistolet">Objets fun</a>
-  <a href="#contact">Contact</a>
-  <a href="#panier">🛒 Panier (<span id="cart-count">0</span>)</a>
+  <a href="#pistolet">Fun</a>
+  <a href="#panier">Panier</a>
 </nav>
 
-<div class="container">
-  <h2>Mes catégories</h2>
-  <p>Clique sur une catégorie pour voir les produits.</p>
-</div>
-
-<!-- FIGURINES -->
-<div class="container category-section" id="figurines">
-
+<div class="container" id="figurines">
   <h2 class="category-title">Figurines</h2>
 
   <div class="grid">
 
     <div class="card">
-      <img src="dragon.webp" alt="Figurine dragon">
-
+      <img src="dragon.webp">
       <div class="card-content">
-        <h3>Figurine dragon</h3>
-        <p>Figurine détaillée imprimée en 3D.</p>
+        <h3>Dragon</h3>
         <p>5€</p>
-
-        <button onclick="addToCart('Figurine dragon', 5)">
-          Ajouter au panier
-        </button>
+        <button onclick="addToCart('Dragon',5)">Ajouter</button>
       </div>
     </div>
 
     <div class="card">
-      <img src="figurine cochon.webp" alt="Figurine cochon">
-
+      <img src="figurine cochon.webp">
       <div class="card-content">
-        <h3>Figurine cochon</h3>
-        <p>Figurine de cochon.</p>
+        <h3>Cochon</h3>
         <p>5€</p>
-
-        <button onclick="addToCart('Figurine cochon', 5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="figurine chat dinosore.webp" alt="Figurine chat dinosaure">
-
-      <div class="card-content">
-        <h3>Figurine chat dinosaure</h3>
-        <p>Figurine chat dinosaure.</p>
-        <p>6€</p>
-
-        <button onclick="addToCart('Figurine chat dinosaure', 6)">
-          Ajouter au panier
-        </button>
+        <button onclick="addToCart('Cochon',5)">Ajouter</button>
       </div>
     </div>
 
   </div>
-
 </div>
 
-<!-- OBJETS UTILES -->
-<div class="container category-section" id="utile">
+<div class="container" id="panier">
+  <h2 class="category-title">Panier</h2>
 
-  <h2 class="category-title">Objets utiles</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="support pour telephone.webp" alt="Support téléphone">
-
-      <div class="card-content">
-        <h3>Support téléphone</h3>
-        <p>Support pratique pour smartphone.</p>
-        <p>7€</p>
-
-        <button onclick="addToCart('Support téléphone', 7)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="support pour ordinateur.webp" alt="Support ordinateur">
-
-      <div class="card-content">
-        <h3>Support ordinateur</h3>
-        <p>Support pratique pour ordinateur.</p>
-        <p>7€</p>
-
-        <button onclick="addToCart('Support ordinateur', 7)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="pince robotique.webp" alt="Pince robotique">
-
-      <div class="card-content">
-        <h3>Pince robotique</h3>
-        <p>Pince robotique.</p>
-        <p>6€</p>
-
-        <button onclick="addToCart('Pince robotique', 6)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="volant pour manette.webp" alt="volant pour manette">
-      
-      <div class="card-content">
-        <h3>Volant pour manette</h3>
-        <p>Volant pour manette.</p>
-        <p>7€</p>
-
-        <button onclick="addToCart('Volant pour manette', 7)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="volant pour manette de switch.webp" alt="volant manette switch">
-
-      <div class="card-content">
-        <h3>Volant pour manette de switch</h3>
-        <p>Volant pour manette de switch.</p>
-        <p>7€</p>
-  
-        <button onclick="addToCart('Volant pour manette de switch', 7)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- FIDGET -->
-<div class="container category-section" id="fidget">
-
-  <h2 class="category-title">Fidget</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="main-articulé.jpg" alt="Main articulée">
-
-      <div class="card-content">
-        <h3>Main articulée</h3>
-        <p>Objet satisfaisant.</p>
-        <p>8€</p>
-
-        <button onclick="addToCart('Main articulée', 8)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="mini oeuf dragon articule.webp" alt="Mini oeuf dragon articulé">
-
-      <div class="card-content">
-        <h3>Mini oeuf dragon articulé</h3>
-        <p>Objet satisfaisant.</p>
-        <p>9.50€</p>
-
-        <button onclick="addToCart('Mini oeuf dragon articulé', 9.5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="cone spirale.webp" alt="Cone spirale">
-
-      <div class="card-content">
-        <h3>Cone spirale</h3>
-        <p>Objet satisfaisant.</p>
-        <p>5€</p>
-
-        <button onclick="addToCart('Cone spirale', 5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- OBJETS FUN -->
-<div class="container category-section" id="pistolet">
-
-  <h2 class="category-title">Objets fun</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="pistolet a curdents.webp" alt="Pistolet à cure-dents">
-
-      <div class="card-content">
-        <h3>Pistolet à cure-dents</h3>
-        <p>Objet drôle.</p>
-        <p>2.50€</p>
-
-        <button onclick="addToCart('Pistolet à cure-dents', 2.5)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="lance piere de poche.webp" alt="Lance pierre de poche">
-
-      <div class="card-content">
-        <h3>Lance pierre de poche</h3>
-        <p>Objet drôle.</p>
-        <p>3€</p>
-
-        <button onclick="addToCart('Lance pierre de poche', 3)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="pistolet a bille.webp" alt="Pistolet à billes">
-
-      <div class="card-content">
-        <h3>Pistolet à billes</h3>
-        <p>Objet drôle.</p>
-        <p>3€</p>
-
-        <button onclick="addToCart('Pistolet à billes', 3)">
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- PANIER -->
-<div class="container category-section" id="panier">
-
-  <h2 class="category-title">🛒 Panier</h2>
-
-  <div id="cart-items">
-    <p>Le panier est vide.</p>
-  </div>
-
+  <div id="cart-items"></div>
   <h3>Total : <span id="cart-total">0</span> €</h3>
 
   <!-- PAYPAL -->
   <div class="payment-box">
+    <h3>PayPal</h3>
+    <button onclick="payWithPaypal()">Payer avec PayPal</button>
+  </div>
 
-    <h3>Paiement PayPal</h3>
+  <!-- EMAIL -->
+  <div class="payment-box">
+    <h3>Envoyer la commande</h3>
 
-    <p>
-      Clique pour payer avec PayPal.
-    </p>
+    <input id="name" placeholder="Nom">
+    <input id="email" placeholder="Email">
+    <textarea id="address" placeholder="Adresse"></textarea>
 
-    <button onclick="payWithPaypal()">
-      Payer avec PayPal
-    </button>
-
+    <button onclick="sendOrderEmail()">Envoyer la commande</button>
   </div>
 
 </div>
 
-<!-- CONTACT -->
-<div class="container" id="contact">
-
-  <h2>Contact</h2>
-
-  <p>
-    tonemail@example.com
-  </p>
-
-</div>
-
-<footer>
-  <p>© 2026 Mes impressions 3D</p>
-</footer>
-
 <script>
 
-  let cart = [];
-  let total = 0;
+let cart = [];
+let total = 0;
 
-  function addToCart(name, price) {
+function addToCart(name, price){
+  cart.push({name, price});
+  total += price;
+  updateCart();
+}
 
-    cart.push({ name, price });
-    total += price;
+function removeFromCart(index){
+  total -= cart[index].price;
+  cart.splice(index,1);
+  updateCart();
+}
 
-    updateCart();
+function updateCart(){
+
+  const box = document.getElementById("cart-items");
+  const totalBox = document.getElementById("cart-total");
+
+  box.innerHTML = "";
+
+  cart.forEach((item,i)=>{
+    box.innerHTML += `
+      <div class="cart-item">
+        ${item.name} - ${item.price}€
+        <button onclick="removeFromCart(${i})">X</button>
+      </div>
+    `;
+  });
+
+  totalBox.innerText = total.toFixed(2);
+}
+
+function payWithPaypal(){
+
+  if(total <= 0){
+    alert("Panier vide");
+    return;
   }
 
-  function removeFromCart(index) {
+  window.open(`https://paypal.me/yecine/${total}`, "_blank");
+}
 
-    total -= cart[index].price;
-    cart.splice(index, 1);
+function sendOrderEmail(){
 
-    updateCart();
+  if(cart.length === 0){
+    alert("Panier vide");
+    return;
   }
 
-  function updateCart() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
 
-    const cartItems = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    const cartCount = document.getElementById("cart-count");
+  let order = "";
 
-    cartItems.innerHTML = "";
+  cart.forEach(i=>{
+    order += `- ${i.name} (${i.price}€)\n`;
+  });
 
-    if (cart.length === 0) {
-
-      cartItems.innerHTML = "<p>Le panier est vide.</p>";
-
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      access_key: "8766f665-dac8-4be6-936e-43b8c17454ea",
+      name: name,
+      email: email,
+      message: `Commande:\n${order}\n\nAdresse:\n${address}\n\nTotal: ${total}€`
+    })
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.success){
+      alert("Commande envoyée !");
+      cart = [];
+      total = 0;
+      updateCart();
     } else {
-
-      cart.forEach((item, index) => {
-
-        cartItems.innerHTML += `
-
-          <div class="cart-item">
-
-            <span>
-              ${item.name} - ${item.price}€
-            </span>
-
-            <button onclick="removeFromCart(${index})">
-              Supprimer
-            </button>
-
-          </div>
-
-        `;
-
-      });
-
+      alert("Erreur envoi");
     }
+  });
 
-    cartTotal.textContent = total.toFixed(2);
-    cartCount.textContent = cart.length;
-  }
-
-  function payWithPaypal() {
-
-    if(total <= 0){
-
-      alert("Le panier est vide.");
-      return;
-
-    }
-
-    window.open(
-      `https://paypal.me/yecine/${total}`,
-      "_blank"
-    );
-
-  }
+}
 
 </script>
 
