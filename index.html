@@ -11,7 +11,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f5f5f5;
-      color: #333;
+      color: #1f1f1f;
     }
 
     header {
@@ -27,6 +27,7 @@
       text-align: center;
       position: sticky;
       top: 0;
+      z-index: 10;
     }
 
     nav a {
@@ -42,86 +43,222 @@
       margin: auto;
     }
 
+    .step-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 140px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      background: #e9ecef;
+      color: #4f4f4f;
+    }
+
+    .step.active {
+      background: #0d6efd;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .step.completed {
+      background: #28a745;
+      color: white;
+    }
+
+    .step.pending {
+      background: #e9ecef;
+      color: #4f4f4f;
+    }
+
+    .step .step-number {
+      display: block;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+
+    .step-note {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .step-content {
+      display: none;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .step-content.active {
+      display: block;
+    }
+
+    .step-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       justify-content: center;
     }
 
     .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .card img {
       width: 100%;
-      height: 220px;
+      height: 210px;
       object-fit: cover;
     }
 
     .card-content {
-      padding: 15px;
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .category-title {
       background: #333;
       color: white;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
       margin-top: 40px;
     }
 
-    button {
-      background: #111;
-      color: white;
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
       border: none;
-      padding: 10px;
-      border-radius: 8px;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
-      width: 100%;
-      margin-top: 10px;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      text-decoration: none;
     }
 
-    button:hover {
-      background: #444;
+    .button:hover:not(.disabled) {
+      transform: translateY(-1px);
+    }
+
+    .button.primary { background: #0d6efd; color: white; }
+    .button.secondary { background: #6c757d; color: white; }
+    .button.success { background: #28a745; color: white; }
+    .button.warning { background: #fd7e14; color: white; }
+    .button.info { background: #0dcaf0; color: #071b26; }
+    .button.disabled { background: #d3d3d3; color: #6c757d; cursor: not-allowed; opacity: 0.65; }
+
+    .cart-panel,
+    .payment-box,
+    .summary-box {
+      background: #f8f9fa;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+    }
+
+    aside.cart-panel {
+      position: sticky;
+      top: 108px;
+      align-self: start;
+    }
+
+    .cart-panel h3,
+    .payment-box h3,
+    .summary-box h3 {
+      margin-top: 0;
     }
 
     .cart-item {
       background: white;
-      padding: 10px;
+      padding: 12px 14px;
       margin-bottom: 10px;
-      border-radius: 8px;
+      border-radius: 12px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
 
-    .payment-box {
-      background: white;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 12px;
+    .cart-item button {
+      width: auto;
+      min-width: 40px;
+      background: #dc3545;
+      color: white;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin: 0;
     }
 
     input, textarea {
       width: 100%;
-      padding: 10px;
-      margin: 5px 0;
+      padding: 12px;
+      margin: 8px 0 16px;
+      border: 1px solid #ced4da;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      background: white;
     }
 
-    .steps {
+    textarea { min-height: 120px; resize: vertical; }
+
+    .status {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    .status-success { background: #d1e7dd; color: #0f5132; }
+    .status-warning { background: #fff3cd; color: #664d03; }
+    .status-info { background: #cff4fc; color: #055160; }
+
+    .mini-cart {
+      margin-top: 12px;
+    }
+
+    .step-actions {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 12px;
       flex-wrap: wrap;
+      margin-top: 18px;
     }
 
-    .step {
-      padding: 10px;
-      background: #ddd;
-      border-radius: 8px;
+    @media (max-width: 860px) {
+      .step-columns { grid-template-columns: 1fr; }
+      nav a { display: block; margin: 8px 0; }
     }
   </style>
 </head>
@@ -143,269 +280,409 @@
 
 <div class="container">
 
-<h2>Commande</h2>
+  <h2>Commande</h2>
 
-<div class="steps">
-  <div id="step1" class="step" style="background:#ffcc00;">1. Panier</div>
-  <div id="step2" class="step">2. Paiement</div>
-  <div id="step3" class="step">3. Envoi</div>
-</div>
-
-<!-- FIGURINES -->
-<h2 class="category-title" id="figurines">Figurines</h2>
-
-<div class="grid">
-
-  <div class="card">
-    <img src="dragon.webp">
-    <div class="card-content">
-      <h3>Dragon</h3>
-      <p>5€</p>
-      <button onclick="addToCart('Dragon',5)">Ajouter</button>
+  <div class="step-bar">
+    <div id="step1" class="step active" onclick="setStep(1)">
+      <span class="step-number">Étape 1</span>
+      Panier
+    </div>
+    <div id="step2" class="step pending" onclick="setStep(2)">
+      <span class="step-number">Étape 2</span>
+      Paiement
+    </div>
+    <div id="step3" class="step pending" onclick="setStep(3)">
+      <span class="step-number">Étape 3</span>
+      Envoi
     </div>
   </div>
 
-  <div class="card">
-    <img src="figurine cochon.webp">
-    <div class="card-content">
-      <h3>Cochon</h3>
-      <p>5€</p>
-      <button onclick="addToCart('Cochon',5)">Ajouter</button>
+  <div id="step-note" class="step-note">
+    Étape 1/3 : sélectionnez vos articles puis passez au paiement.
+  </div>
+
+  <div id="step-content-1" class="step-content active">
+    <div class="step-columns">
+      <div>
+        <h2 class="category-title" id="figurines">Figurines</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="dragon.webp" alt="Dragon">
+            <div class="card-content">
+              <div>
+                <h3>Dragon</h3>
+                <p>5€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Dragon',5)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="figurine cochon.webp" alt="Cochon">
+            <div class="card-content">
+              <div>
+                <h3>Cochon</h3>
+                <p>5€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Cochon',5)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="figurine chat dinosore.webp" alt="Chat dinosaure">
+            <div class="card-content">
+              <div>
+                <h3>Chat dinosaure</h3>
+                <p>6€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Chat dinosaure',6)">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="category-title" id="utiles">Objets utiles</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="support pour telephone.webp" alt="Support téléphone">
+            <div class="card-content">
+              <div>
+                <h3>Support téléphone</h3>
+                <p>7€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Support téléphone',7)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="support pour ordinateur.webp" alt="Support ordinateur">
+            <div class="card-content">
+              <div>
+                <h3>Support ordinateur</h3>
+                <p>7€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Support ordinateur',7)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="pince robotique.webp" alt="Pince robotique">
+            <div class="card-content">
+              <div>
+                <h3>Pince robotique</h3>
+                <p>6€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Pince robotique',6)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="volant pour manette.webp" alt="Volant manette">
+            <div class="card-content">
+              <div>
+                <h3>Volant manette</h3>
+                <p>7€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Volant manette',7)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="volant pour manette de switch.webp" alt="Volant Switch">
+            <div class="card-content">
+              <div>
+                <h3>Volant Switch</h3>
+                <p>7€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Volant Switch',7)">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="category-title" id="fidget">Fidget</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="main-articulé.jpg" alt="Main articulée">
+            <div class="card-content">
+              <div>
+                <h3>Main articulée</h3>
+                <p>8€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Main articulée',8)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="mini oeuf dragon articule.webp" alt="Œuf dragon">
+            <div class="card-content">
+              <div>
+                <h3>Œuf dragon</h3>
+                <p>9.50€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Œuf dragon',9.5)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="cone spirale.webp" alt="Cône spirale">
+            <div class="card-content">
+              <div>
+                <h3>Cône spirale</h3>
+                <p>5€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Cône spirale',5)">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="category-title" id="fun">Objets fun</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="pistolet a curdents.webp" alt="Pistolet cure-dents">
+            <div class="card-content">
+              <div>
+                <h3>Pistolet cure-dents</h3>
+                <p>2.50€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Pistolet cure-dents',2.5)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="lance piere de poche.webp" alt="Lance pierre">
+            <div class="card-content">
+              <div>
+                <h3>Lance pierre</h3>
+                <p>3€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Lance pierre',3)">Ajouter</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="pistolet a bille.webp" alt="Pistolet bille">
+            <div class="card-content">
+              <div>
+                <h3>Pistolet bille</h3>
+                <p>3€</p>
+              </div>
+              <button class="button primary" onclick="addToCart('Pistolet bille',3)">Ajouter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="cart-panel">
+        <h3>Résumé du panier</h3>
+        <div id="cart-items"></div>
+        <h3>Total : <span id="cart-total">0</span> €</h3>
+        <div class="step-actions">
+          <button id="checkout-button" class="button primary" onclick="goToPayment()">Passer au paiement</button>
+        </div>
+      </aside>
     </div>
   </div>
 
-  <div class="card">
-    <img src="figurine chat dinosore.webp">
-    <div class="card-content">
-      <h3>Chat dinosaure</h3>
-      <p>6€</p>
-      <button onclick="addToCart('Chat dinosaure',6)">Ajouter</button>
+  <div id="step-content-2" class="step-content">
+    <div class="payment-box">
+      <h3>Paiement</h3>
+      <p>Étape 2/3 : payez sur PayPal puis confirmez votre paiement.</p>
+      <div class="step-actions">
+        <button class="button info" onclick="goPay()">Payer avec PayPal</button>
+        <button id="confirm-pay-btn" class="button warning" onclick="confirmPaid()">J’ai payé</button>
+      </div>
+      <div id="payment-status" class="status status-warning">Paiement en attente</div>
+    </div>
+    <div class="summary-box">
+      <h3>Contenu du panier</h3>
+      <div class="mini-cart" id="mini-cart-2"></div>
+      <p><strong>Total : </strong><span id="mini-total-2">0</span> €</p>
+      <div class="step-actions">
+        <button class="button secondary" onclick="setStep(1)">Retour au panier</button>
+      </div>
     </div>
   </div>
 
-</div>
-
-<!-- UTILITAIRES -->
-<h2 class="category-title" id="utiles">Objets utiles</h2>
-
-<div class="grid">
-
-  <div class="card">
-    <img src="support pour telephone.webp">
-    <div class="card-content">
-      <h3>Support téléphone</h3>
-      <p>7€</p>
-      <button onclick="addToCart('Support téléphone',7)">Ajouter</button>
+  <div id="step-content-3" class="step-content">
+    <div class="payment-box">
+      <h3>Envoi de la commande</h3>
+      <p>Étape 3/3 : remplissez vos coordonnées pour finaliser la livraison.</p>
+      <input id="name" placeholder="Nom" />
+      <input id="email" placeholder="Email" />
+      <textarea id="address" placeholder="Adresse"></textarea>
+      <button id="send-order-btn" class="button disabled" onclick="sendOrder()">Envoyer</button>
+    </div>
+    <div class="summary-box">
+      <h3>Récapitulatif</h3>
+      <div class="mini-cart" id="mini-cart-3"></div>
+      <p><strong>Total : </strong><span id="mini-total-3">0</span> €</p>
+      <div class="step-actions">
+        <button class="button secondary" onclick="setStep(2)">Retour au paiement</button>
+      </div>
     </div>
   </div>
-
-  <div class="card">
-    <img src="support pour ordinateur.webp">
-    <div class="card-content">
-      <h3>Support ordinateur</h3>
-      <p>7€</p>
-      <button onclick="addToCart('Support ordinateur',7)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="pince robotique.webp">
-    <div class="card-content">
-      <h3>Pince robotique</h3>
-      <p>6€</p>
-      <button onclick="addToCart('Pince robotique',6)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="volant pour manette.webp">
-    <div class="card-content">
-      <h3>Volant manette</h3>
-      <p>7€</p>
-      <button onclick="addToCart('Volant manette',7)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="volant pour manette de switch.webp">
-    <div class="card-content">
-      <h3>Volant Switch</h3>
-      <p>7€</p>
-      <button onclick="addToCart('Volant Switch',7)">Ajouter</button>
-    </div>
-  </div>
-
-</div>
-
-<!-- FIDGET -->
-<h2 class="category-title" id="fidget">Fidget</h2>
-
-<div class="grid">
-
-  <div class="card">
-    <img src="main-articulé.jpg">
-    <div class="card-content">
-      <h3>Main articulée</h3>
-      <p>8€</p>
-      <button onclick="addToCart('Main articulée',8)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="mini oeuf dragon articule.webp">
-    <div class="card-content">
-      <h3>Œuf dragon</h3>
-      <p>9.50€</p>
-      <button onclick="addToCart('Œuf dragon',9.5)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="cone spirale.webp">
-    <div class="card-content">
-      <h3>Cône spirale</h3>
-      <p>5€</p>
-      <button onclick="addToCart('Cône spirale',5)">Ajouter</button>
-    </div>
-  </div>
-
-</div>
-
-<!-- FUN -->
-<h2 class="category-title" id="fun">Objets fun</h2>
-
-<div class="grid">
-
-  <div class="card">
-    <img src="pistolet a curdents.webp">
-    <div class="card-content">
-      <h3>Pistolet cure-dents</h3>
-      <p>2.50€</p>
-      <button onclick="addToCart('Pistolet cure-dents',2.5)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="lance piere de poche.webp">
-    <div class="card-content">
-      <h3>Lance pierre</h3>
-      <p>3€</p>
-      <button onclick="addToCart('Lance pierre',3)">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="pistolet a bille.webp">
-    <div class="card-content">
-      <h3>Pistolet bille</h3>
-      <p>3€</p>
-      <button onclick="addToCart('Pistolet bille',3)">Ajouter</button>
-    </div>
-  </div>
-
-</div>
-
-</div>
-
-<!-- PANIER -->
-<div class="container" id="panier">
-
-<h2 class="category-title">Panier</h2>
-
-<div id="cart-items"></div>
-<h3>Total : <span id="cart-total">0</span> €</h3>
-
-<div class="payment-box">
-  <h3>PayPal</h3>
-  <button onclick="goPay()">Payer</button>
-  <button onclick="confirmPaid()">J’ai payé</button>
-</div>
-
-<div class="payment-box">
-  <h3>Envoyer commande</h3>
-
-  <input id="name" placeholder="Nom">
-  <input id="email" placeholder="Email">
-  <textarea id="address" placeholder="Adresse"></textarea>
-
-  <button onclick="sendOrder()">Envoyer</button>
-</div>
 
 </div>
 
 <script>
-
 let cart = [];
 let total = 0;
 let paid = false;
+let currentStep = 1;
 
-function addToCart(n,p){
-  cart.push({name:n,price:p});
-  total += p;
-  updateCart();
+function setStep(step) {
+  currentStep = step;
+  updateStepUI();
 }
 
-function removeFromCart(i){
-  total -= cart[i].price;
-  cart.splice(i,1);
-  updateCart();
+function updateStepUI() {
+  [1, 2, 3].forEach(step => {
+    const el = document.getElementById(`step${step}`);
+    el.classList.remove('active', 'completed', 'pending');
+    if (step === currentStep) {
+      el.classList.add('active');
+    } else if (step < currentStep || (step === 2 && paid && currentStep > 2)) {
+      el.classList.add('completed');
+    } else {
+      el.classList.add('pending');
+    }
+  });
+
+  const note = document.getElementById('step-note');
+  if (currentStep === 1) {
+    note.textContent = 'Étape 1/3 : vérifiez votre panier et ajoutez ou retirez des articles.';
+  } else if (currentStep === 2) {
+    note.textContent = 'Étape 2/3 : payez avec PayPal puis confirmez votre paiement.';
+  } else {
+    note.textContent = 'Étape 3/3 : indiquez vos coordonnées et envoyez la commande.';
+  }
+
+  document.querySelectorAll('.step-content').forEach(section => section.classList.remove('active'));
+  document.getElementById(`step-content-${currentStep}`).classList.add('active');
+
+  const checkoutButton = document.getElementById('checkout-button');
+  if (total <= 0) {
+    checkoutButton.classList.add('disabled');
+    checkoutButton.disabled = true;
+  } else {
+    checkoutButton.classList.remove('disabled');
+    checkoutButton.disabled = false;
+  }
+
+  const confirmButton = document.getElementById('confirm-pay-btn');
+  confirmButton.className = `button ${paid ? 'success' : 'warning'}`;
+  confirmButton.textContent = paid ? 'Paiement confirmé' : 'J’ai payé';
+  confirmButton.disabled = paid;
+  if (paid) confirmButton.classList.add('disabled');
+
+  const sendOrderButton = document.getElementById('send-order-btn');
+  if (paid) {
+    sendOrderButton.className = 'button primary';
+    sendOrderButton.disabled = false;
+  } else {
+    sendOrderButton.className = 'button disabled';
+    sendOrderButton.disabled = true;
+  }
+
+  const status = document.getElementById('payment-status');
+  if (paid) {
+    status.textContent = 'Paiement validé. Vous pouvez envoyer la commande.';
+    status.className = 'status status-success';
+  } else {
+    status.textContent = 'Paiement en attente. Cliquez sur « J’ai payé » lorsque vous avez terminé.';
+    status.className = 'status status-warning';
+  }
 }
 
-function updateCart(){
+function updateCart() {
+  const box = document.getElementById('cart-items');
+  box.innerHTML = '';
 
-  let box = document.getElementById("cart-items");
-  box.innerHTML = "";
-
-  cart.forEach((i,index)=>{
+  cart.forEach((item, index) => {
     box.innerHTML += `
       <div class="cart-item">
-        ${i.name} - ${i.price}€
+        <span>${item.name} - ${item.price.toFixed(2)}€</span>
         <button onclick="removeFromCart(${index})">X</button>
       </div>
     `;
   });
 
-  document.getElementById("cart-total").innerText = total.toFixed(2);
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+  updateMiniCart();
+  updateStepUI();
 }
 
-function goPay(){
-  if(total<=0)return alert("Panier vide");
-  window.open(`https://paypal.me/yecine/${total}`,"_blank");
-  document.getElementById("step2").style.background="#ffcc00";
+function updateMiniCart() {
+  const summary = cart.length
+    ? cart.map(item => `<div class="cart-item">${item.name} - ${item.price.toFixed(2)}€</div>`).join('')
+    : '<p>Votre panier est vide.</p>';
+
+  document.querySelectorAll('.mini-cart').forEach(el => el.innerHTML = summary);
+  document.getElementById('mini-total-2').textContent = total.toFixed(2);
+  document.getElementById('mini-total-3').textContent = total.toFixed(2);
 }
 
-function confirmPaid(){
+function addToCart(name, price) {
+  cart.push({ name, price });
+  total += price;
+  paid = false;
+  updateCart();
+}
+
+function removeFromCart(index) {
+  total -= cart[index].price;
+  cart.splice(index, 1);
+  if (cart.length === 0) {
+    paid = false;
+    currentStep = 1;
+  }
+  updateCart();
+}
+
+function goToPayment() {
+  if (total <= 0) return alert('Panier vide');
+  setStep(2);
+}
+
+function goPay() {
+  if (total <= 0) return alert('Panier vide');
+  window.open(`https://paypal.me/yecine/${total}`, '_blank');
+  const status = document.getElementById('payment-status');
+  status.textContent = 'Paiement en cours... Cliquez sur « J’ai payé » une fois terminé.';
+  status.className = 'status status-info';
+  setStep(2);
+}
+
+function confirmPaid() {
+  if (total <= 0) return alert('Panier vide');
   paid = true;
-  document.getElementById("step2").style.background="#00cc66";
-  document.getElementById("step3").style.background="#ffcc00";
+  setStep(3);
 }
 
-function sendOrder(){
+function sendOrder() {
+  if (!paid) return alert('Tu dois payer avant');
+  if (cart.length === 0) return alert('Panier vide');
 
-  if(!paid) return alert("Tu dois payer avant");
-  if(cart.length===0) return alert("Panier vide");
+  const order = cart.map(item => `- ${item.name} ${item.price.toFixed(2)}€`).join('\n');
 
-  let order="";
-  cart.forEach(i=>order+=`- ${i.name} ${i.price}€\n`);
-
-  fetch("https://api.web3forms.com/submit",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({
-      access_key:"8766f665-dac8-4be6-936e-43b8c17454ea",
-      name:document.getElementById("name").value,
-      email:document.getElementById("email").value,
-      message:`Commande:\n${order}\nTotal:${total}€\nAdresse:${document.getElementById("address").value}`
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      access_key: '8766f665-dac8-4be6-936e-43b8c17454ea',
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: `Commande:\n${order}\nTotal: ${total.toFixed(2)}€\nAdresse: ${document.getElementById('address').value}`
     })
-  }).then(r=>r.json()).then(d=>{
-    if(d.success){
-      alert("Commande envoyée !");
-      cart=[]; total=0; paid=false; updateCart();
-    }
-  });
-
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Commande envoyée !');
+        cart = [];
+        total = 0;
+        paid = false;
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('address').value = '';
+        setStep(1);
+        updateCart();
+      }
+    })
+    .catch(() => alert('Erreur lors de l’envoi.'));
 }
 
+updateStepUI();
+updateMiniCart();
 </script>
 
 </body>
