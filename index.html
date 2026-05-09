@@ -27,7 +27,6 @@
       text-align: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
     }
 
     nav a {
@@ -46,8 +45,8 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
-      justify-content: center;
       gap: 20px;
+      justify-content: center;
     }
 
     .card {
@@ -111,6 +110,19 @@
       padding: 10px;
       margin: 5px 0;
     }
+
+    .steps {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      padding: 10px;
+      background: #ddd;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
@@ -123,13 +135,21 @@
 
 <nav>
   <a href="#figurines">Figurines</a>
-  <a href="#utile">Utiles</a>
+  <a href="#utiles">Utiles</a>
   <a href="#fidget">Fidget</a>
   <a href="#fun">Fun</a>
   <a href="#panier">Panier</a>
 </nav>
 
 <div class="container">
+
+<h2>Commande</h2>
+
+<div class="steps">
+  <div id="step1" class="step" style="background:#ffcc00;">1. Panier</div>
+  <div id="step2" class="step">2. Paiement</div>
+  <div id="step3" class="step">3. Envoi</div>
+</div>
 
 <!-- FIGURINES -->
 <h2 class="category-title" id="figurines">Figurines</h2>
@@ -166,7 +186,7 @@
 </div>
 
 <!-- UTILITAIRES -->
-<h2 class="category-title" id="utile">Objets utiles</h2>
+<h2 class="category-title" id="utiles">Objets utiles</h2>
 
 <div class="grid">
 
@@ -293,22 +313,22 @@
 <h2 class="category-title">Panier</h2>
 
 <div id="cart-items"></div>
-
 <h3>Total : <span id="cart-total">0</span> €</h3>
 
 <div class="payment-box">
   <h3>PayPal</h3>
-  <button onclick="payWithPaypal()">Payer</button>
+  <button onclick="goPay()">Payer</button>
+  <button onclick="confirmPaid()">J’ai payé</button>
 </div>
 
 <div class="payment-box">
-  <h3>Commande email</h3>
+  <h3>Envoyer commande</h3>
 
   <input id="name" placeholder="Nom">
   <input id="email" placeholder="Email">
   <textarea id="address" placeholder="Adresse"></textarea>
 
-  <button onclick="sendOrderEmail()">Envoyer commande</button>
+  <button onclick="sendOrder()">Envoyer</button>
 </div>
 
 </div>
@@ -317,10 +337,11 @@
 
 let cart = [];
 let total = 0;
+let paid = false;
 
-function addToCart(name, price){
-  cart.push({name, price});
-  total += price;
+function addToCart(n,p){
+  cart.push({name:n,price:p});
+  total += p;
   updateCart();
 }
 
@@ -332,69 +353,54 @@ function removeFromCart(i){
 
 function updateCart(){
 
-  const box = document.getElementById("cart-items");
-  const totalBox = document.getElementById("cart-total");
-
+  let box = document.getElementById("cart-items");
   box.innerHTML = "";
 
-  cart.forEach((item,i)=>{
+  cart.forEach((i,index)=>{
     box.innerHTML += `
       <div class="cart-item">
-        ${item.name} - ${item.price}€
-        <button onclick="removeFromCart(${i})">X</button>
+        ${i.name} - ${i.price}€
+        <button onclick="removeFromCart(${index})">X</button>
       </div>
     `;
   });
 
-  totalBox.innerText = total.toFixed(2);
+  document.getElementById("cart-total").innerText = total.toFixed(2);
 }
 
-function payWithPaypal(){
-
-  if(total <= 0){
-    alert("Panier vide");
-    return;
-  }
-
-  window.open(`https://paypal.me/yecine/${total}`, "_blank");
+function goPay(){
+  if(total<=0)return alert("Panier vide");
+  window.open(`https://paypal.me/yecine/${total}`,"_blank");
+  document.getElementById("step2").style.background="#ffcc00";
 }
 
-function sendOrderEmail(){
+function confirmPaid(){
+  paid = true;
+  document.getElementById("step2").style.background="#00cc66";
+  document.getElementById("step3").style.background="#ffcc00";
+}
 
-  if(cart.length === 0){
-    alert("Panier vide");
-    return;
-  }
+function sendOrder(){
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
+  if(!paid) return alert("Tu dois payer avant");
+  if(cart.length===0) return alert("Panier vide");
 
-  let order = "";
+  let order="";
+  cart.forEach(i=>order+=`- ${i.name} ${i.price}€\n`);
 
-  cart.forEach(i=>{
-    order += `- ${i.name} (${i.price}€)\n`;
-  });
-
-  fetch("https://api.web3forms.com/submit", {
+  fetch("https://api.web3forms.com/submit",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({
+    body:JSON.stringify({
       access_key:"8766f665-dac8-4be6-936e-43b8c17454ea",
-      name,
-      email,
-      message:`Commande:\n${order}\n\nAdresse:\n${address}\n\nTotal:${total}€`
+      name:document.getElementById("name").value,
+      email:document.getElementById("email").value,
+      message:`Commande:\n${order}\nTotal:${total}€\nAdresse:${document.getElementById("address").value}`
     })
-  })
-  .then(r=>r.json())
-  .then(d=>{
+  }).then(r=>r.json()).then(d=>{
     if(d.success){
       alert("Commande envoyée !");
-      cart = [];
-      total = 0;
-      updateCart();
-    } else {
-      alert("Erreur");
+      cart=[]; total=0; paid=false; updateCart();
     }
   });
 
